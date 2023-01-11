@@ -59,19 +59,27 @@ def fight():
             print_pause("but your dagger is no match "
                         "for the {}.".format(creature))
             print_pause("You have been defeated!")
-        play_again = input("Would you like to play again? (y/n) \n")
-        if 'y' in play_again:
-            print_pause("Excellent! Restarting the game ...")
-            ammunition.clear()
-            intro()
-            field()
-        elif 'n' in play_again:
-            print_pause("Thanks for playing! See you next time")
-
+        play_game_again()
     elif fight_run == '2':
         print_pause("You run back into the field."
                     " Luckily, you don't seem to have been followed.")
         field()
+    else:
+        play_game_again()
+
+
+def play_game_again():
+    play_again = input("Would you like to play again? (y/n) \n")
+    if play_again == 'y':
+        print_pause("Excellent! Restarting the game ...")
+        ammunition.clear()
+        intro()
+        field()
+    elif play_again == 'n':
+        print_pause("Thanks for playing! See you next time")
+    else:
+        print_pause("Please enter y or n")
+        play_game_again()
 
 
 def house():
